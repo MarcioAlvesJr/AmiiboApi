@@ -1,25 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-.background {
-  width: 100vw;
-  height: 100vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, white), to(#727272));
-  background-image: linear-gradient(white 20%, #727272);
-  position: fixed;
-  display: block;
-  z-index: -99999;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, white), to(#cccccc));
+  background-image: linear-gradient(white 20%, #cccccc);
 }
 
 .wrapper {
@@ -83,5 +78,39 @@ body {
   padding-left: 7vh;
   border-radius: 1000vh;
   border-style: hidden;
+}
+
+.wrapper .card {
+  position: relative;
+  -webkit-filter: drop-shadow(0 0 0.75rem #b3b3b3);
+          filter: drop-shadow(0 0 0.75rem #b3b3b3);
+}
+
+.wrapper .card .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3vh;
+  height: 5vh;
+  background-color: gray;
+  font-weight: bold;
+  color: white;
+  margin: 2vh 0 0;
+  border-radius: 100vh;
+}
+
+.wrapper .card .content {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), to(#d8d8d8));
+  background-image: linear-gradient(white 50%, #d8d8d8);
+  border-radius: 0 0 3vh 3vh;
+  display: -ms-grid;
+  display: grid;
+}
+
+.wrapper .card.active .title {
+  border-radius: 100vh 100vh 0 0;
 }
 /*# sourceMappingURL=style.css.map */

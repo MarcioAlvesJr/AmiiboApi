@@ -1,27 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
+
 $color-1: white;
-$color-2: rgb(114, 114, 114);
+$color-2: rgb(204, 204, 204);
+
+$drop-shadow: drop-shadow(0 0 0.75rem rgb(179, 179, 179));
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-.background {
-  width: 100vw;
-  height: 100vh;
   background-image: linear-gradient($color-1 20%, $color-2);
-
-  position: fixed;
-  display: block;
-  z-index: -99999;
 }
 
 .wrapper {
@@ -45,7 +42,7 @@ body {
       position: relative;
       display: flex;
       margin-top: 1vh;
-      filter: drop-shadow(0 0 0.75rem rgb(179, 179, 179));
+      filter: $drop-shadow;
       * {
         height: 3vh;
       }
@@ -62,6 +59,34 @@ body {
         border-radius: 1000vh;
         border-style: hidden;
       }
+    }
+  }
+
+  .card {
+    position: relative;
+    filter: $drop-shadow;
+    .title {
+      display: flex;
+      align-items: center;
+      padding: 3vh;
+      height: 5vh;
+      background-color: gray;
+      font-weight: bold;
+      color: white;
+
+      margin: 2vh 0 0;
+
+      border-radius: 100vh;
+    }
+    .content {
+      background-image: linear-gradient(white 50%, rgb(216, 216, 216));
+      border-radius: 0 0 3vh 3vh;
+      display: grid;
+    }
+  }
+  .card.active {
+    .title {
+      border-radius: 100vh 100vh 0 0;
     }
   }
 }
