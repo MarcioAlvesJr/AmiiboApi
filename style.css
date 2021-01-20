@@ -214,5 +214,72 @@ body {
 .wrapper .card.active .content .info.release-date {
   background-color: #05abe73b;
   grid-column: 1/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper .card.active .content .info.release-date * {
+  display: block;
+  padding: 0.5vh 2vh 1vh 1.5vh;
+}
+
+.wrapper .card.active .content .info.release-date .australia::before {
+  content: "";
+  display: inline-block;
+  left: 3vh;
+  height: 3vh;
+  width: 3vh;
+  background-image: url("/img/australia.svg");
+  background-size: 100%;
+  margin: 0 1vh;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
+}
+
+.wrapper .card.active .content .info.release-date .japan:before {
+  content: "";
+  content: "";
+  display: inline-block;
+  left: 3vh;
+  height: 3vh;
+  width: 3vh;
+  background-image: url("/img/japan.svg");
+  background-size: 100%;
+  margin: 0 1vh;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
+}
+
+.wrapper .card.active .content .info.release-date .europe:before {
+  content: "";
+  content: "";
+  display: inline-block;
+  left: 3vh;
+  height: 3vh;
+  width: 3vh;
+  background-image: url("/img/european-union.svg");
+  background-size: 100%;
+  margin: 0 1vh;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
+}
+
+.wrapper .card.active .content .info.release-date .north-america:before {
+  content: "";
+  content: "";
+  display: inline-block;
+  left: 3vh;
+  height: 3vh;
+  width: 3vh;
+  background-image: url("/img/united-states.svg");
+  background-size: 100%;
+  margin: 0 1vh;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
 }
 /*# sourceMappingURL=style.css.map */

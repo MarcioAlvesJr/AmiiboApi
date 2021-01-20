@@ -201,6 +201,69 @@ body {
       .info.release-date {
         background-color: $color-title-4-fade;
         grid-column: 1/-1;
+        display: flex;
+        flex-direction: column;
+        * {
+          display: block;
+          padding: 0.5vh 2vh 1vh 1.5vh;
+        }
+
+        .australia::before {
+          content: "";
+
+          display: inline-block;
+          left: $item-pill-height;
+          height: $item-pill-height;
+          width: $item-pill-height;
+          background-image: url("/img/australia.svg");
+          background-size: 100%;
+
+          margin: 0 1vh;
+
+          transform: translateY(0.5vh);
+        }
+        .japan:before {
+          content: "";
+          content: "";
+          display: inline-block;
+          left: $item-pill-height;
+          height: $item-pill-height;
+          width: $item-pill-height;
+          background-image: url("/img/japan.svg");
+          background-size: 100%;
+
+          margin: 0 1vh;
+
+          transform: translateY(0.5vh);
+        }
+        .europe:before {
+          content: "";
+          content: "";
+          display: inline-block;
+          left: $item-pill-height;
+          height: $item-pill-height;
+          width: $item-pill-height;
+          background-image: url("/img/european-union.svg");
+          background-size: 100%;
+
+          margin: 0 1vh;
+
+          transform: translateY(0.5vh);
+        }
+        .north-america:before {
+          content: "";
+          content: "";
+          display: inline-block;
+          left: $item-pill-height;
+          height: $item-pill-height;
+          width: $item-pill-height;
+          background-image: url("/img/united-states.svg");
+          background-size: 100%;
+
+          margin: 0 1vh;
+
+          transform: translateY(0.5vh);
+        }
       }
     }
   }
