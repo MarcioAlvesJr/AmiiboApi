@@ -24,6 +24,7 @@ $drop-shadow: drop-shadow(0 0 0.75rem rgb(179, 179, 179));
   list-style: none;
   outline: none;
   font-family: "Roboto", sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -47,10 +48,10 @@ body {
     position: absolute;
     z-index: -1;
     background-color: white;
-    filter: blur(2vh);
+    filter: blur(4vh);
     top: -5vh;
     width: 100vw;
-    height: 27vh;
+    height: 23vh;
   }
   header {
     display: flex;
@@ -162,7 +163,8 @@ body {
           grid-column: span 1;
           grid-row: span 3;
 
-          height: 35vh;
+          max-height: 35vh;
+          max-width: 30vh;
         }
 
         .info {
@@ -327,4 +329,10 @@ body {
       }
     }
   }
+}
+footer {
+  display: block;
+  width: 100vw;
+  bottom: 1vh;
+  text-align: center;
 }

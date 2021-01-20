@@ -7,6 +7,7 @@
   list-style: none;
   outline: none;
   font-family: "Roboto", sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -38,11 +39,11 @@ body {
   position: absolute;
   z-index: -1;
   background-color: white;
-  -webkit-filter: blur(2vh);
-          filter: blur(2vh);
+  -webkit-filter: blur(4vh);
+          filter: blur(4vh);
   top: -5vh;
   width: 100vw;
-  height: 27vh;
+  height: 23vh;
 }
 
 .wrapper header {
@@ -187,7 +188,8 @@ body {
 .wrapper .card .content-wrapper .content img {
   grid-column: span 1;
   grid-row: span 3;
-  height: 35vh;
+  max-height: 35vh;
+  max-width: 30vh;
 }
 
 .wrapper .card .content-wrapper .content .info {
@@ -352,5 +354,12 @@ body {
 
 .wrapper .card.active .content-wrapper .content {
   padding: 2vh 0 3vh;
+}
+
+footer {
+  display: block;
+  width: 100vw;
+  bottom: 1vh;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
