@@ -3,6 +3,18 @@
 $color-1: white;
 $color-2: rgb(204, 204, 204);
 
+$color-title-1: #c8007d;
+$color-title-1-fade: #c8007b3b;
+$color-title-2: #f4a901;
+$color-title-2-fade: #f4a7013b;
+$color-title-3: #008663;
+$color-title-3-fade: #0086623b;
+$color-title-4: #05aae7;
+$color-title-4-fade: #05abe73b;
+
+$item-pill-height: 3vh;
+$item-pill-width: 30vh;
+
 $drop-shadow: drop-shadow(0 0 0.75rem rgb(179, 179, 179));
 
 * {
@@ -64,6 +76,7 @@ body {
 
   .card {
     position: relative;
+    width: 65vh;
     filter: $drop-shadow;
     .title {
       display: flex;
@@ -81,12 +94,114 @@ body {
     .content {
       background-image: linear-gradient(white 50%, rgb(216, 216, 216));
       border-radius: 0 0 3vh 3vh;
-      display: grid;
+      height: 0;
+      overflow: hidden;
     }
   }
   .card.active {
     .title {
       border-radius: 100vh 100vh 0 0;
+    }
+    .content {
+      height: 100%;
+      padding: 2vh 0 3vh;
+
+      display: grid;
+      grid-gap: 1vh;
+      grid-template-columns: 1.8fr 2fr;
+
+      align-items: center;
+      justify-items: center;
+
+      * {
+        text-align: center;
+      }
+
+      img {
+        grid-column: span 1;
+        grid-row: span 3;
+
+        height: 35vh;
+      }
+
+      .info {
+        border-radius: 2vh;
+
+        width: $item-pill-width;
+
+        position: relative;
+        top: 0;
+      }
+      .info.amiibo-series::before {
+        content: "Amiibo Series";
+        display: block;
+
+        height: $item-pill-height;
+        width: $item-pill-width;
+
+        text-align: center;
+        border-radius: 9999vh;
+
+        color: white;
+        background-color: $color-title-1;
+      }
+      .info.amiibo-series {
+        background-color: $color-title-1-fade;
+        grid-column: 2/3;
+      }
+      .info.game-series::before {
+        content: "Game Series";
+        display: block;
+
+        height: $item-pill-height;
+        width: $item-pill-width;
+
+        text-align: center;
+        border-radius: 9999vh;
+
+        color: white;
+        background-color: $color-title-2;
+      }
+      .info.game-series {
+        background-color: $color-title-2-fade;
+        grid-column: 2/3;
+      }
+
+      .info.type::before {
+        content: "Type";
+        display: block;
+
+        height: $item-pill-height;
+        width: $item-pill-width;
+
+        text-align: center;
+        border-radius: 9999vh;
+
+        color: white;
+        background-color: $color-title-3;
+      }
+      .info.type {
+        background-color: $color-title-3-fade;
+        grid-column: 2/3;
+      }
+
+      .info.release-date::before {
+        content: "Release Date";
+        display: block;
+
+        height: $item-pill-height;
+        width: $item-pill-width;
+
+        text-align: center;
+        border-radius: 9999vh;
+
+        color: white;
+        background-color: $color-title-4;
+      }
+      .info.release-date {
+        background-color: $color-title-4-fade;
+        grid-column: 1/-1;
+      }
     }
   }
 }

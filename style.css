@@ -82,6 +82,7 @@ body {
 
 .wrapper .card {
   position: relative;
+  width: 65vh;
   -webkit-filter: drop-shadow(0 0 0.75rem #b3b3b3);
           filter: drop-shadow(0 0 0.75rem #b3b3b3);
 }
@@ -106,11 +107,112 @@ body {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), to(#d8d8d8));
   background-image: linear-gradient(white 50%, #d8d8d8);
   border-radius: 0 0 3vh 3vh;
-  display: -ms-grid;
-  display: grid;
+  height: 0;
+  overflow: hidden;
 }
 
 .wrapper .card.active .title {
   border-radius: 100vh 100vh 0 0;
+}
+
+.wrapper .card.active .content {
+  height: 100%;
+  padding: 2vh 0 3vh;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1vh;
+  -ms-grid-columns: 1.8fr 2fr;
+      grid-template-columns: 1.8fr 2fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+.wrapper .card.active .content * {
+  text-align: center;
+}
+
+.wrapper .card.active .content img {
+  grid-column: span 1;
+  grid-row: span 3;
+  height: 35vh;
+}
+
+.wrapper .card.active .content .info {
+  border-radius: 2vh;
+  width: 30vh;
+  position: relative;
+  top: 0;
+}
+
+.wrapper .card.active .content .info.amiibo-series::before {
+  content: "Amiibo Series";
+  display: block;
+  height: 3vh;
+  width: 30vh;
+  text-align: center;
+  border-radius: 9999vh;
+  color: white;
+  background-color: #c8007d;
+}
+
+.wrapper .card.active .content .info.amiibo-series {
+  background-color: #c8007b3b;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.wrapper .card.active .content .info.game-series::before {
+  content: "Game Series";
+  display: block;
+  height: 3vh;
+  width: 30vh;
+  text-align: center;
+  border-radius: 9999vh;
+  color: white;
+  background-color: #f4a901;
+}
+
+.wrapper .card.active .content .info.game-series {
+  background-color: #f4a7013b;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.wrapper .card.active .content .info.type::before {
+  content: "Type";
+  display: block;
+  height: 3vh;
+  width: 30vh;
+  text-align: center;
+  border-radius: 9999vh;
+  color: white;
+  background-color: #008663;
+}
+
+.wrapper .card.active .content .info.type {
+  background-color: #0086623b;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.wrapper .card.active .content .info.release-date::before {
+  content: "Release Date";
+  display: block;
+  height: 3vh;
+  width: 30vh;
+  text-align: center;
+  border-radius: 9999vh;
+  color: white;
+  background-color: #05aae7;
+}
+
+.wrapper .card.active .content .info.release-date {
+  background-color: #05abe73b;
+  grid-column: 1/-1;
 }
 /*# sourceMappingURL=style.css.map */
