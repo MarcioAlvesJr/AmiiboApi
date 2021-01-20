@@ -41,6 +41,17 @@ body {
 
   position: relative;
 
+  header::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background-color: white;
+    filter: blur(2vh);
+    top: -5vh;
+    width: 100vw;
+    height: 27vh;
+  }
   header {
     display: flex;
     flex-direction: column;
@@ -48,7 +59,9 @@ body {
     justify-content: center;
 
     position: sticky;
+    z-index: 100;
     top: 1vh;
+    margin: 3vh;
 
     .input {
       position: relative;
@@ -78,192 +91,239 @@ body {
     position: relative;
     width: 65vh;
     filter: $drop-shadow;
-    .title {
+    .top-box {
       display: flex;
       align-items: center;
       padding: 3vh;
       height: 5vh;
       background-color: gray;
-      font-weight: bold;
-      color: white;
-
       margin: 2vh 0 0;
+      position: relative;
 
       border-radius: 100vh;
-    }
-    .content {
-      background-image: linear-gradient(white 50%, rgb(216, 216, 216));
-      border-radius: 0 0 3vh 3vh;
-      height: 0;
-      overflow: hidden;
-    }
-  }
-  .card.active {
-    .title {
-      border-radius: 100vh 100vh 0 0;
-    }
-    .content {
-      height: 100%;
-      padding: 2vh 0 3vh;
-
-      display: grid;
-      grid-gap: 1vh;
-      grid-template-columns: 1.8fr 2fr;
-
-      align-items: center;
-      justify-items: center;
 
       * {
-        text-align: center;
-      }
-
-      img {
-        grid-column: span 1;
-        grid-row: span 3;
-
-        height: 35vh;
-      }
-
-      .info {
-        border-radius: 2vh;
-
-        width: $item-pill-width;
-
-        position: relative;
-        top: 0;
-      }
-      .info.amiibo-series::before {
-        content: "Amiibo Series";
         display: block;
-
-        height: $item-pill-height;
-        width: $item-pill-width;
-
-        text-align: center;
-        border-radius: 9999vh;
-
+        z-index: 5;
+      }
+      transition: 0.7s ease;
+      .title {
+        font-weight: bold;
         color: white;
-        background-color: $color-title-1;
       }
-      .info.amiibo-series {
-        background-color: $color-title-1-fade;
-        grid-column: 2/3;
+      .click-to-change {
+        position: absolute;
+        right: 0;
       }
-      .info.game-series::before {
-        content: "Game Series";
-        display: block;
+      .click-to-change * {
+        position: absolute;
+        right: 2vh;
+        bottom: -0.8vh;
+        transform: scale(0.5);
+        cursor: pointer;
 
-        height: $item-pill-height;
-        width: $item-pill-width;
-
-        text-align: center;
-        border-radius: 9999vh;
-
-        color: white;
-        background-color: $color-title-2;
+        transition: 0.5s ease;
       }
-      .info.game-series {
-        background-color: $color-title-2-fade;
-        grid-column: 2/3;
+      .click-to-change img:nth-child(1) {
+        transform: scale(0.5) rotate(90deg);
       }
+    }
+    .content-wrapper {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      height: 0;
+      z-index: -2;
 
-      .info.type::before {
-        content: "Type";
-        display: block;
+      transform: translateY(-2vh);
 
-        height: $item-pill-height;
-        width: $item-pill-width;
+      transition: 0.5s ease;
 
-        text-align: center;
-        border-radius: 9999vh;
+      .content {
+        background-image: linear-gradient(white 50%, rgb(216, 216, 216));
+        border-radius: 0 0 3vh 3vh;
+        padding: 2vh 0 3vh;
 
-        color: white;
-        background-color: $color-title-3;
-      }
-      .info.type {
-        background-color: $color-title-3-fade;
-        grid-column: 2/3;
-      }
+        overflow: hidden;
 
-      .info.release-date::before {
-        content: "Release Date";
-        display: block;
+        display: grid;
+        grid-gap: 1vh;
+        grid-template-columns: 1.8fr 2fr;
 
-        height: $item-pill-height;
-        width: $item-pill-width;
+        align-items: center;
+        justify-items: center;
 
-        text-align: center;
-        border-radius: 9999vh;
-
-        color: white;
-        background-color: $color-title-4;
-      }
-      .info.release-date {
-        background-color: $color-title-4-fade;
-        grid-column: 1/-1;
-        display: flex;
-        flex-direction: column;
         * {
+          text-align: center;
+        }
+
+        img {
+          grid-column: span 1;
+          grid-row: span 3;
+
+          height: 35vh;
+        }
+
+        .info {
+          border-radius: 2vh;
+
+          width: $item-pill-width;
+
+          position: relative;
+          top: 0;
+        }
+        .info.amiibo-series::before {
+          content: "Amiibo Series";
           display: block;
-          padding: 0.5vh 2vh 1vh 1.5vh;
-        }
 
-        .australia::before {
-          content: "";
-
-          display: inline-block;
-          left: $item-pill-height;
           height: $item-pill-height;
-          width: $item-pill-height;
-          background-image: url("/img/australia.svg");
-          background-size: 100%;
+          width: $item-pill-width;
 
-          margin: 0 1vh;
+          text-align: center;
+          border-radius: 9999vh;
 
-          transform: translateY(0.5vh);
+          color: white;
+          background-color: $color-title-1;
         }
-        .japan:before {
-          content: "";
-          content: "";
-          display: inline-block;
-          left: $item-pill-height;
+        .info.amiibo-series {
+          background-color: $color-title-1-fade;
+          grid-column: 2/3;
+        }
+        .info.game-series::before {
+          content: "Game Series";
+          display: block;
+
           height: $item-pill-height;
-          width: $item-pill-height;
-          background-image: url("/img/japan.svg");
-          background-size: 100%;
+          width: $item-pill-width;
 
-          margin: 0 1vh;
+          text-align: center;
+          border-radius: 9999vh;
 
-          transform: translateY(0.5vh);
+          color: white;
+          background-color: $color-title-2;
         }
-        .europe:before {
-          content: "";
-          content: "";
-          display: inline-block;
-          left: $item-pill-height;
+        .info.game-series {
+          background-color: $color-title-2-fade;
+          grid-column: 2/3;
+        }
+
+        .info.type::before {
+          content: "Type";
+          display: block;
+
           height: $item-pill-height;
-          width: $item-pill-height;
-          background-image: url("/img/european-union.svg");
-          background-size: 100%;
+          width: $item-pill-width;
 
-          margin: 0 1vh;
+          text-align: center;
+          border-radius: 9999vh;
 
-          transform: translateY(0.5vh);
+          color: white;
+          background-color: $color-title-3;
         }
-        .north-america:before {
-          content: "";
-          content: "";
-          display: inline-block;
-          left: $item-pill-height;
+        .info.type {
+          background-color: $color-title-3-fade;
+          grid-column: 2/3;
+        }
+
+        .info.release-date::before {
+          content: "Release Date";
+          display: block;
+
           height: $item-pill-height;
-          width: $item-pill-height;
-          background-image: url("/img/united-states.svg");
-          background-size: 100%;
+          width: $item-pill-width;
 
-          margin: 0 1vh;
+          text-align: center;
+          border-radius: 9999vh;
 
-          transform: translateY(0.5vh);
+          color: white;
+          background-color: $color-title-4;
         }
+        .info.release-date {
+          background-color: $color-title-4-fade;
+          grid-column: 1/-1;
+          display: flex;
+          flex-direction: column;
+          * {
+            display: block;
+            padding: 0.5vh 2vh 1vh 1.5vh;
+          }
+
+          .australia::before {
+            content: "";
+
+            display: inline-block;
+            left: $item-pill-height;
+            height: $item-pill-height;
+            width: $item-pill-height;
+            background-image: url("/img/australia.svg");
+            background-size: 100%;
+
+            margin: 0 1vh;
+
+            transform: translateY(0.5vh);
+          }
+          .japan:before {
+            content: "";
+            content: "";
+            display: inline-block;
+            left: $item-pill-height;
+            height: $item-pill-height;
+            width: $item-pill-height;
+            background-image: url("/img/japan.svg");
+            background-size: 100%;
+
+            margin: 0 1vh;
+
+            transform: translateY(0.5vh);
+          }
+          .europe:before {
+            content: "";
+            content: "";
+            display: inline-block;
+            left: $item-pill-height;
+            height: $item-pill-height;
+            width: $item-pill-height;
+            background-image: url("/img/european-union.svg");
+            background-size: 100%;
+
+            margin: 0 1vh;
+
+            transform: translateY(0.5vh);
+          }
+          .north-america:before {
+            content: "";
+            content: "";
+            display: inline-block;
+            left: $item-pill-height;
+            height: $item-pill-height;
+            width: $item-pill-height;
+            background-image: url("/img/united-states.svg");
+            background-size: 100%;
+
+            margin: 0 1vh;
+
+            transform: translateY(0.5vh);
+          }
+        }
+      }
+    }
+  }
+
+  .card.active {
+    .top-box {
+      border-radius: 100vh 100vh 0 0;
+
+      .click-to-change img:nth-child(1) {
+        transform: scale(0.5);
+      }
+    }
+    .content-wrapper {
+      opacity: 1;
+      height: 67vh;
+      transform: translateY(0);
+      .content {
+        padding: 2vh 0 3vh;
       }
     }
   }

@@ -32,6 +32,19 @@ body {
   position: relative;
 }
 
+.wrapper header::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  background-color: white;
+  -webkit-filter: blur(2vh);
+          filter: blur(2vh);
+  top: -5vh;
+  width: 100vw;
+  height: 27vh;
+}
+
 .wrapper header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,7 +61,9 @@ body {
           justify-content: center;
   position: -webkit-sticky;
   position: sticky;
+  z-index: 100;
   top: 1vh;
+  margin: 3vh;
 }
 
 .wrapper header .input {
@@ -87,7 +102,7 @@ body {
           filter: drop-shadow(0 0 0.75rem #b3b3b3);
 }
 
-.wrapper .card .title {
+.wrapper .card .top-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,27 +112,63 @@ body {
   padding: 3vh;
   height: 5vh;
   background-color: gray;
-  font-weight: bold;
-  color: white;
   margin: 2vh 0 0;
+  position: relative;
   border-radius: 100vh;
+  -webkit-transition: 0.7s ease;
+  transition: 0.7s ease;
 }
 
-.wrapper .card .content {
+.wrapper .card .top-box * {
+  display: block;
+  z-index: 5;
+}
+
+.wrapper .card .top-box .title {
+  font-weight: bold;
+  color: white;
+}
+
+.wrapper .card .top-box .click-to-change {
+  position: absolute;
+  right: 0;
+}
+
+.wrapper .card .top-box .click-to-change * {
+  position: absolute;
+  right: 2vh;
+  bottom: -0.8vh;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  cursor: pointer;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.wrapper .card .top-box .click-to-change img:nth-child(1) {
+  -webkit-transform: scale(0.5) rotate(90deg);
+          transform: scale(0.5) rotate(90deg);
+}
+
+.wrapper .card .content-wrapper {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+  z-index: -2;
+  -webkit-transform: translateY(-2vh);
+          transform: translateY(-2vh);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.wrapper .card .content-wrapper .content {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), to(#d8d8d8));
   background-image: linear-gradient(white 50%, #d8d8d8);
   border-radius: 0 0 3vh 3vh;
-  height: 0;
-  overflow: hidden;
-}
-
-.wrapper .card.active .title {
-  border-radius: 100vh 100vh 0 0;
-}
-
-.wrapper .card.active .content {
-  height: 100%;
   padding: 2vh 0 3vh;
+  overflow: hidden;
   display: -ms-grid;
   display: grid;
   grid-gap: 1vh;
@@ -129,24 +180,24 @@ body {
   justify-items: center;
 }
 
-.wrapper .card.active .content * {
+.wrapper .card .content-wrapper .content * {
   text-align: center;
 }
 
-.wrapper .card.active .content img {
+.wrapper .card .content-wrapper .content img {
   grid-column: span 1;
   grid-row: span 3;
   height: 35vh;
 }
 
-.wrapper .card.active .content .info {
+.wrapper .card .content-wrapper .content .info {
   border-radius: 2vh;
   width: 30vh;
   position: relative;
   top: 0;
 }
 
-.wrapper .card.active .content .info.amiibo-series::before {
+.wrapper .card .content-wrapper .content .info.amiibo-series::before {
   content: "Amiibo Series";
   display: block;
   height: 3vh;
@@ -157,14 +208,14 @@ body {
   background-color: #c8007d;
 }
 
-.wrapper .card.active .content .info.amiibo-series {
+.wrapper .card .content-wrapper .content .info.amiibo-series {
   background-color: #c8007b3b;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
 }
 
-.wrapper .card.active .content .info.game-series::before {
+.wrapper .card .content-wrapper .content .info.game-series::before {
   content: "Game Series";
   display: block;
   height: 3vh;
@@ -175,14 +226,14 @@ body {
   background-color: #f4a901;
 }
 
-.wrapper .card.active .content .info.game-series {
+.wrapper .card .content-wrapper .content .info.game-series {
   background-color: #f4a7013b;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
 }
 
-.wrapper .card.active .content .info.type::before {
+.wrapper .card .content-wrapper .content .info.type::before {
   content: "Type";
   display: block;
   height: 3vh;
@@ -193,14 +244,14 @@ body {
   background-color: #008663;
 }
 
-.wrapper .card.active .content .info.type {
+.wrapper .card .content-wrapper .content .info.type {
   background-color: #0086623b;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
 }
 
-.wrapper .card.active .content .info.release-date::before {
+.wrapper .card .content-wrapper .content .info.release-date::before {
   content: "Release Date";
   display: block;
   height: 3vh;
@@ -211,7 +262,7 @@ body {
   background-color: #05aae7;
 }
 
-.wrapper .card.active .content .info.release-date {
+.wrapper .card .content-wrapper .content .info.release-date {
   background-color: #05abe73b;
   grid-column: 1/-1;
   display: -webkit-box;
@@ -223,12 +274,12 @@ body {
           flex-direction: column;
 }
 
-.wrapper .card.active .content .info.release-date * {
+.wrapper .card .content-wrapper .content .info.release-date * {
   display: block;
   padding: 0.5vh 2vh 1vh 1.5vh;
 }
 
-.wrapper .card.active .content .info.release-date .australia::before {
+.wrapper .card .content-wrapper .content .info.release-date .australia::before {
   content: "";
   display: inline-block;
   left: 3vh;
@@ -241,7 +292,7 @@ body {
           transform: translateY(0.5vh);
 }
 
-.wrapper .card.active .content .info.release-date .japan:before {
+.wrapper .card .content-wrapper .content .info.release-date .japan:before {
   content: "";
   content: "";
   display: inline-block;
@@ -255,7 +306,7 @@ body {
           transform: translateY(0.5vh);
 }
 
-.wrapper .card.active .content .info.release-date .europe:before {
+.wrapper .card .content-wrapper .content .info.release-date .europe:before {
   content: "";
   content: "";
   display: inline-block;
@@ -269,7 +320,7 @@ body {
           transform: translateY(0.5vh);
 }
 
-.wrapper .card.active .content .info.release-date .north-america:before {
+.wrapper .card .content-wrapper .content .info.release-date .north-america:before {
   content: "";
   content: "";
   display: inline-block;
@@ -281,5 +332,25 @@ body {
   margin: 0 1vh;
   -webkit-transform: translateY(0.5vh);
           transform: translateY(0.5vh);
+}
+
+.wrapper .card.active .top-box {
+  border-radius: 100vh 100vh 0 0;
+}
+
+.wrapper .card.active .top-box .click-to-change img:nth-child(1) {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+
+.wrapper .card.active .content-wrapper {
+  opacity: 1;
+  height: 67vh;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.wrapper .card.active .content-wrapper .content {
+  padding: 2vh 0 3vh;
 }
 /*# sourceMappingURL=style.css.map */
