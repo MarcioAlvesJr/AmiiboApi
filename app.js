@@ -14,6 +14,7 @@ let amiibos = undefined
 loadMoreBtn.addEventListener('click', loadMore)
 input.addEventListener("keyup", ()=> {
     listOfCards.innerHTML = ""
+    loadMoreBtn.style.display = "none"
     if(input.value.length != 0){
         selectAmiibos(input.value.toLowerCase())
     }
@@ -30,34 +31,47 @@ async function getData() {
 
 
 function selectAmiibos(text){
-
     selectedAmiibos = []
-    text.toLowerCase
+    
+    let words = text.split(" "),
+        doesItContainall = 0
+    
+    words.forEach(word => word.toLowerCase)
+
 
     amiibos.forEach(amiibo =>{
-        let containsText = 0
-        amiibo.name.toLowerCase().includes(text) ? containsText++ :{}
-        amiibo.amiiboSeries.toLowerCase().includes(text) ? containsText++ :{}
-        amiibo.character.toLowerCase().includes(text) ? containsText++ :{}
-        amiibo.gameSeries.toLowerCase().includes(text) ? containsText++ :{}
-        amiibo.type.toLowerCase().includes(text) ? containsText++ :{}
         
-        if(typeof amiibo.release.au  === 'string'){
-        amiibo.release.au.toLowerCase().includes(text) ? containsText++ :{}
-        }
-        if(typeof amiibo.release.eu  === 'string'){
-            amiibo.release.eu.toLowerCase().includes(text) ? containsText++ :{}
-        }
-        if(typeof amiibo.release.jp  === 'string'){
-            amiibo.release.jp.toLowerCase().includes(text) ? containsText++ :{}
-        }
-        if(typeof amiibo.release.na  === 'string'){
-            amiibo.release.na.toLowerCase().includes(text) ? containsText++ :{}
-        }
+        words.forEach(word=>{
+            let containsText = 0
+            amiibo.name.toLowerCase().includes(word) ? containsText++ :{}
+            amiibo.amiiboSeries.toLowerCase().includes(word) ? containsText++ :{}
+            amiibo.character.toLowerCase().includes(word) ? containsText++ :{}
+            amiibo.gameSeries.toLowerCase().includes(word) ? containsText++ :{}
+            amiibo.type.toLowerCase().includes(word) ? containsText++ :{}
+            
+            if(typeof amiibo.release.au  === 'string'){
+            amiibo.release.au.toLowerCase().includes(word) ? containsText++ :{}
+            }
+            if(typeof amiibo.release.eu  === 'string'){
+                amiibo.release.eu.toLowerCase().includes(word) ? containsText++ :{}
+            }
+            if(typeof amiibo.release.jp  === 'string'){
+                amiibo.release.jp.toLowerCase().includes(word) ? containsText++ :{}
+            }
+            if(typeof amiibo.release.na  === 'string'){
+                amiibo.release.na.toLowerCase().includes(word) ? containsText++ :{}
+            }
+            if (containsText > 0){
+                doesItContainall++
+            }
+        })
 
-        if (containsText > 0){
+
+
+        if (doesItContainall == words.length){
             selectedAmiibos.push(amiibo)
         }
+        doesItContainall = 0
     })
 
     load.from = 0
@@ -66,8 +80,7 @@ function selectAmiibos(text){
 }
 
 function loadAmiibos(){
-    console.log(selectedAmiibos.length)
-    console.log(load.until)
+
     if(selectedAmiibos.length > load.until){
         loadMoreBtn.style.display = "flex"
     }else{
@@ -88,21 +101,20 @@ function loadAmiibos(){
         }
 
     })
+    addEventListenerToCard()
 
-    addEventListener()
 }
 
 function loadMore(){
     load.from = load.from+amiibosToLoadEachTime
     load.until = load.until+amiibosToLoadEachTime
     loadAmiibos()
-    addEventListener()
 
 }
 
 
 //Add event listener to list to click to expand/minimize card
-function addEventListener(){
+function addEventListenerToCard(){
     const clickToExpMin = document.querySelectorAll(".click-to-change")
 
     clickToExpMin.forEach(element=> {
