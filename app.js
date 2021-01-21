@@ -127,12 +127,8 @@ function addEventListenerToCard(){
 function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRelease, eurRelease, norRelease){
 
     const card = document.createElement("li")
-    let year = ""
+    let year = getEarliestYear(ausRelease,japRelease,eurRelease)
     card.classList.add('card')
-
-    if (typeof japRelease === 'string') {
-        year = `${japRelease[0]}${japRelease[1]}${japRelease[2]}${japRelease[3]}`
-    }
     
     card.innerHTML = `
     <div class="top-box">
@@ -158,5 +154,25 @@ function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRe
     listOfCards.appendChild(card)
 }
 
+function getEarliestYear(ausRelease,japRelease,eurRelease){
+    const years = [ausRelease,japRelease,eurRelease]
+    let validYears = [],
+        earlyYear = 0
+
+    years.forEach(year => {
+        if (typeof year === 'string') {
+         validYears.push(parseInt(`${year[0]}${year[1]}${year[2]}${year[3]}`,10))    
+       }
+    })
+    earlyYear = validYears[0]
+    validYears.forEach((year,idx) =>{
+        if(idx >0 && earlyYear>year){
+            earlyYear = year 
+        }
+    })
+
+
+    return earlyYear
+}
 
 //createCard("Mario","https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png","Super Smash Bros.", "Super Mario", "Figure", "2014-11-29" , "2014-12-06","2014-11-28","2014-11-21")
