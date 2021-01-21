@@ -363,4 +363,36 @@ footer {
   width: 100vw;
   bottom: 1vh;
   text-align: center;
+
+  * {
+    display: block;
+    padding: 1vh;
+    color: black;
+  }
+  transition: 0.3s ease;
+  a:hover {
+    opacity: 0.8;
+  }
+  a:active {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper .card {
+    * {
+      font-size: 2vh;
+    }
+    max-width: 50vh;
+
+    .content-wrapper {
+      .content {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .wrapper .card.active .content-wrapper {
+    height: 90vh;
+  }
 }

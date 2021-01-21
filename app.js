@@ -142,10 +142,10 @@ function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRe
             <div class="info type">${type}</div>
             <div class="info release-date">
                 <ul>
-                    <li class="australia">${ausRelease}</li>
-                    <li class="japan">${japRelease}</li>
-                    <li class="europe">${eurRelease}</li>
-                    <li class="north-america">${norRelease}</li>
+                    <li class="australia" ${ausRelease == null ? `style="display:none;"`:""}>${ausRelease}</li>
+                    <li class="japan"${japRelease == null ? `style="display:none;"`:""}>${japRelease}</li>
+                    <li class="europe"${eurRelease == null ? `style="display:none;"`:""}>${eurRelease}</li>
+                    <li class="north-america"${norRelease == null ? `style="display:none;"`:""}>${norRelease}</li>
                 </ul>
             </div>
         </div>
