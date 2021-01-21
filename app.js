@@ -1,12 +1,22 @@
 
 let amiibos = undefined
     selectedAmiibos = []
+    load = {
+        from: 0,
+        until: 0
+    }
+    amiibosToLoadEachTime = 10
 //UI DOM elements
     listOfCards = document.querySelector('.itens')
     input = document.querySelector('input')
+    loadMoreBtn = document.querySelector('.add-more')
 
-input.addEventListener("input", (e)=> {
-    selectAmiibos(input.value.toLowerCase())
+loadMoreBtn.addEventListener('click', loadMore)
+input.addEventListener("keyup", ()=> {
+    listOfCards.innerHTML = ""
+    if(input.value.length != 0){
+        selectAmiibos(input.value.toLowerCase())
+    }
 })
 
 listOfCards.innerHTML = ""
@@ -20,13 +30,13 @@ async function getData() {
 
 
 function selectAmiibos(text){
-    listOfCards.innerHTML = ""
+
     selectedAmiibos = []
     text.toLowerCase
 
     amiibos.forEach(amiibo =>{
         let containsText = 0
-
+        amiibo.name.toLowerCase().includes(text) ? containsText++ :{}
         amiibo.amiiboSeries.toLowerCase().includes(text) ? containsText++ :{}
         amiibo.character.toLowerCase().includes(text) ? containsText++ :{}
         amiibo.gameSeries.toLowerCase().includes(text) ? containsText++ :{}
@@ -50,22 +60,46 @@ function selectAmiibos(text){
         }
     })
 
-    selectedAmiibos.forEach(amiibo => {
-        createCard(
-            amiibo.name,
-            amiibo.image ,
-            amiibo.amiiboSeries ,
-            amiibo.gameSeries ,
-            amiibo.type ,
-            amiibo.release.au ,
-            amiibo.release.jp ,
-            amiibo.release.eu ,
-            amiibo.release.na ,)
+    load.from = 0
+    load.until = amiibosToLoadEachTime
+    loadAmiibos()
+}
+
+function loadAmiibos(){
+    console.log(selectedAmiibos.length)
+    console.log(load.until)
+    if(selectedAmiibos.length > load.until){
+        loadMoreBtn.style.display = "flex"
+    }else{
+        loadMoreBtn.style.display = "none"
+    }
+    selectedAmiibos.forEach((amiibo,idx) => {
+        if(idx>=load.from && idx<load.until){
+            createCard(
+                amiibo.name,
+                amiibo.image ,
+                amiibo.amiiboSeries ,
+                amiibo.gameSeries ,
+                amiibo.type ,
+                amiibo.release.au ,
+                amiibo.release.jp ,
+                amiibo.release.eu ,
+                amiibo.release.na ,)
+        }
+
     })
 
     addEventListener()
+}
+
+function loadMore(){
+    load.from = load.from+amiibosToLoadEachTime
+    load.until = load.until+amiibosToLoadEachTime
+    loadAmiibos()
+    addEventListener()
 
 }
+
 
 //Add event listener to list to click to expand/minimize card
 function addEventListener(){
