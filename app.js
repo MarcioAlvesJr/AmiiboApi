@@ -101,7 +101,6 @@ function loadAmiibos(){
         }
 
     })
-    addEventListenerToCard()
 
 }
 
@@ -110,18 +109,6 @@ function loadMore(){
     load.until = load.until+amiibosToLoadEachTime
     loadAmiibos()
 
-}
-
-
-//Add event listener to list to click to expand/minimize card
-function addEventListenerToCard(){
-    const clickToExpMin = document.querySelectorAll(".click-to-change")
-
-    clickToExpMin.forEach(element=> {
-        element.addEventListener('click', ()=>
-            element.parentElement.parentElement.classList.toggle('active')
-        )
-    })
 }
 
 function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRelease, eurRelease, norRelease){
@@ -151,6 +138,10 @@ function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRe
         </div>
     </div>`
 
+
+    card.querySelector(".click-to-change").addEventListener('click', ()=>
+        card.querySelector(".click-to-change").parentElement.parentElement.classList.toggle('active')
+        )
     listOfCards.appendChild(card)
 }
 
