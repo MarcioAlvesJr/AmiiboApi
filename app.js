@@ -22,7 +22,6 @@ input.addEventListener("keyup", ()=> {
     }
 })
 
-listOfCards.innerHTML = ""
 
 getData()
 async function getData() {

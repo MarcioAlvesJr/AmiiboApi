@@ -16,6 +16,10 @@ body {
   background-image: linear-gradient(white 20%, #cccccc) 0 100% no-repeat;
 }
 
+.tips {
+  text-align: center;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,7 +32,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 5vh;
-  position: relative;
 }
 
 .wrapper header::before {
