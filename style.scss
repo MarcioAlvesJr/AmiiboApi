@@ -28,12 +28,9 @@ $drop-shadow: drop-shadow(0 0 0.75rem rgb(179, 179, 179));
 }
 
 body {
-  width: 100vw;
-  min-height: 100vh;
   overflow-x: hidden;
-  background-image: linear-gradient($color-1 20%, $color-2);
+  background-image: linear-gradient($color-1 20%, $color-2) 0 100% no-repeat;
 }
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -377,7 +374,9 @@ footer {
     transform: scale(0.95);
   }
 }
-
+.amiibo-place-holder {
+  display: none;
+}
 @media (max-width: 600px) {
   .wrapper .card {
     * {
@@ -394,5 +393,56 @@ footer {
   }
   .wrapper .card.active .content-wrapper {
     height: 90vh;
+  }
+}
+
+@media (min-width: 1000px) {
+  .body-wrapper {
+    display: grid;
+    grid-template-columns: 30vw 80vw;
+    grid-template-rows: 100vh;
+    justify-content: center;
+
+    .amiibo-place-holder {
+      grid-column: 1 /2;
+      display: block;
+      position: fixed;
+      left: 9vw;
+      top: 18vh;
+      max-width: 40vh;
+      max-height: 40vh;
+      margin: auto;
+
+      transform: scale(1);
+
+      z-index: 999;
+      transition: 0.5s ease;
+      transform: rotate3d(0);
+      filter: brightness(0) blur(0.6vh);
+    }
+    .amiibo-place-holder.active {
+      filter: brightness(1) blur(0);
+    }
+
+    .amiibo-place-holder.hidden {
+      opacity: 0;
+      transform: rotate3d(0, 1, 0, 90deg);
+    }
+
+    .wrapper {
+      grid-column: 2 /3;
+
+      .card.active .content-wrapper {
+        height: 50vh;
+      }
+
+      .card .content {
+        display: flex;
+        flex-direction: column;
+      }
+      .card .content img {
+        display: none;
+      }
+    }
   }
 }

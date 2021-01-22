@@ -11,11 +11,9 @@
 }
 
 body {
-  width: 100vw;
-  min-height: 100vh;
   overflow-x: hidden;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, white), to(#cccccc));
-  background-image: linear-gradient(white 20%, #cccccc);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, white), to(#cccccc)) 0 100% no-repeat;
+  background-image: linear-gradient(white 20%, #cccccc) 0 100% no-repeat;
 }
 
 .wrapper {
@@ -417,6 +415,10 @@ footer a:active {
           transform: scale(0.95);
 }
 
+.amiibo-place-holder {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .wrapper .card {
     max-width: 50vh;
@@ -435,6 +437,70 @@ footer a:active {
   }
   .wrapper .card.active .content-wrapper {
     height: 90vh;
+  }
+}
+
+@media (min-width: 1000px) {
+  .body-wrapper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 30vw 80vw;
+        grid-template-columns: 30vw 80vw;
+    -ms-grid-rows: 100vh;
+        grid-template-rows: 100vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .body-wrapper .amiibo-place-holder {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 /2;
+    display: block;
+    position: fixed;
+    left: 9vw;
+    top: 18vh;
+    max-width: 40vh;
+    max-height: 40vh;
+    margin: auto;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    z-index: 999;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    -webkit-transform: rotate3d(0);
+            transform: rotate3d(0);
+    -webkit-filter: brightness(0) blur(0.6vh);
+            filter: brightness(0) blur(0.6vh);
+  }
+  .body-wrapper .amiibo-place-holder.active {
+    -webkit-filter: brightness(1) blur(0);
+            filter: brightness(1) blur(0);
+  }
+  .body-wrapper .amiibo-place-holder.hidden {
+    opacity: 0;
+    -webkit-transform: rotate3d(0, 1, 0, 90deg);
+            transform: rotate3d(0, 1, 0, 90deg);
+  }
+  .body-wrapper .wrapper {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 /3;
+  }
+  .body-wrapper .wrapper .card.active .content-wrapper {
+    height: 50vh;
+  }
+  .body-wrapper .wrapper .card .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .body-wrapper .wrapper .card .content img {
+    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

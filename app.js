@@ -6,10 +6,12 @@ let amiibos = undefined
         until: 0
     }
     amiibosToLoadEachTime = 10
+    hiddenCard = 0
 //UI DOM elements
     listOfCards = document.querySelector('.itens')
     input = document.querySelector('input')
     loadMoreBtn = document.querySelector('.add-more')
+    amiiboPlaceHolder = document.querySelector('.amiibo-place-holder')
 
 loadMoreBtn.addEventListener('click', loadMore)
 input.addEventListener("keyup", ()=> {
@@ -139,8 +141,21 @@ function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRe
     </div>`
 
 
-    card.querySelector(".click-to-change").addEventListener('click', ()=>
-        card.querySelector(".click-to-change").parentElement.parentElement.classList.toggle('active')
+    card.querySelector(".click-to-change").addEventListener('click', ()=>{
+        if(window.matchMedia("(min-width: 1000px)").matches){
+            showCardTop(card)
+            document.querySelectorAll(".card").forEach(card =>{
+                card.classList.remove('active')
+            })
+            card.querySelector(".click-to-change").parentElement.parentElement.classList.toggle('active')
+        }else{
+            card.querySelector(".click-to-change").parentElement.parentElement.classList.toggle('active')
+        }
+
+
+    
+        }
+
         )
     listOfCards.appendChild(card)
 }
@@ -164,6 +179,28 @@ function getEarliestYear(ausRelease,japRelease,eurRelease){
 
 
     return earlyYear
+}
+
+function showCardTop(card){
+    const imgCopy = card.querySelector(".content img").cloneNode(true)
+        animationDuration = 300
+    if(amiiboPlaceHolder.classList.value.includes('active') == false){
+        amiiboPlaceHolder.classList.toggle('hidden')
+
+        setTimeout(()=>{
+            amiiboPlaceHolder.classList.add('active')
+            amiiboPlaceHolder.classList.toggle('hidden')
+        },animationDuration)
+    }
+    amiiboPlaceHolder.classList.toggle('hidden')
+    setTimeout(()=>{
+        amiiboPlaceHolder.innerHTML = ""
+        amiiboPlaceHolder.appendChild(imgCopy)
+    },animationDuration)
+    setTimeout(()=>{
+        amiiboPlaceHolder.classList.toggle('hidden')
+        
+    },animationDuration*2)
 }
 
 //createCard("Mario","https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png","Super Smash Bros.", "Super Mario", "Figure", "2014-11-29" , "2014-12-06","2014-11-28","2014-11-21")
