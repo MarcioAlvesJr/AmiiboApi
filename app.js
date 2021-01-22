@@ -142,7 +142,7 @@ function createCard(name, img, amiiboSeries, gameSeries, type, ausRelease, japRe
 
 
     card.querySelector(".click-to-change").addEventListener('click', ()=>{
-        if(window.matchMedia("(min-width: 1500px)").matches){
+        if(window.matchMedia("(min-width: 1025px)").matches){
             showCardTop(card)
             document.querySelectorAll(".card").forEach(card =>{
                 card.classList.remove('active')

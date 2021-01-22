@@ -396,6 +396,7 @@ footer {
   width: 100vw;
   bottom: 1vh;
   text-align: center;
+  padding: 5vh;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
@@ -440,7 +441,7 @@ footer a:active {
   }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1025px) {
   .body-wrapper {
     display: -ms-grid;
     display: grid;
@@ -482,8 +483,7 @@ footer a:active {
             filter: brightness(0) blur(0.6vh);
   }
   .body-wrapper .amiibo-place-holder img {
-    max-width: 100%;
-    height: auto;
+    min-height: 50vh;
   }
   .body-wrapper .amiibo-place-holder.active {
     -webkit-filter: brightness(1) blur(0);

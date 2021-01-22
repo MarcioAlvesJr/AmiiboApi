@@ -360,6 +360,7 @@ footer {
   width: 100vw;
   bottom: 1vh;
   text-align: center;
+  padding: 5vh;
 
   * {
     display: block;
@@ -396,7 +397,7 @@ footer {
   }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1025px) {
   .body-wrapper {
     display: grid;
     grid-template-columns: 40vw 60vw;
@@ -423,8 +424,7 @@ footer {
       filter: brightness(0) blur(0.6vh);
 
       img {
-        max-width: 100%;
-        height: auto;
+        min-height: 50vh;
       }
     }
     .amiibo-place-holder.active {
