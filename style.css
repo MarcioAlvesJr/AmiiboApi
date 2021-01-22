@@ -440,12 +440,13 @@ footer a:active {
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1500px) {
   .body-wrapper {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 30vw 80vw;
-        grid-template-columns: 30vw 80vw;
+    -ms-grid-columns: 40vw 60vw;
+        grid-template-columns: 40vw 60vw;
+    grid-gap: 5vh;
     -ms-grid-rows: 100vh;
         grid-template-rows: 100vh;
     -webkit-box-pack: center;
@@ -456,12 +457,19 @@ footer a:active {
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1 /2;
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     position: fixed;
-    left: 9vw;
-    top: 18vh;
-    max-width: 40vh;
-    max-height: 40vh;
+    left: 13vw;
+    top: 20vh;
+    height: 60vh;
     margin: auto;
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -472,6 +480,10 @@ footer a:active {
             transform: rotate3d(0);
     -webkit-filter: brightness(0) blur(0.6vh);
             filter: brightness(0) blur(0.6vh);
+  }
+  .body-wrapper .amiibo-place-holder img {
+    max-width: 100%;
+    height: auto;
   }
   .body-wrapper .amiibo-place-holder.active {
     -webkit-filter: brightness(1) blur(0);
@@ -486,6 +498,9 @@ footer a:active {
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2 /3;
+  }
+  .body-wrapper .wrapper .card.active .top-box img {
+    width: 0;
   }
   .body-wrapper .wrapper .card.active .content-wrapper {
     height: 50vh;
