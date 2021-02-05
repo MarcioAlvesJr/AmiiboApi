@@ -1,1 +1,1 @@
-# AmiiboApi
+# Amiibo Finder
