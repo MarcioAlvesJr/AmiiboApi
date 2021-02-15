@@ -18,13 +18,13 @@ You can check out the hosted application by [clicking here](https://amiibo-finde
 <br>
 You can check out the figma design of this application by [clicking here](https://www.figma.com/file/ByTbqjLwiNZKIk4rJzUb6U/Api-Mockup?node-id=0%3A1).
 <br>
-<img alt="Gif de Exemplo" src="https://github.com/MarcioAlvior/AmiiboApi/blob/main/demonstration.gif?raw=true" />
+<img alt="Exemple GIF" src="https://github.com/MarcioAlvior/AmiiboApi/blob/main/demonstration.gif?raw=true" />
 
 <br>
 
 ## :fire: Functionalities
 
-- Search for and amiibo 
-- Click on an amiibo to show more info 
+- Search for and Amiibo 
+- Click on an Amiibo to show more info 
 
 <br>
