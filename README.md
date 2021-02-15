@@ -1,11 +1,28 @@
-# Amiibo Finder
-This app gets data from the Amiibo Api.
+<h1 align="center">
+  <img alt="Logo" height="200" src="https://github.com/MarcioAlvior/AmiiboApi/blob/main/img/logo.svg" />
+  <br>
+</h1>
+
+<p align="center">
+
+   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-blue">
+</p>
+
+# The Project
+
+**Amiibo Finder** gets data from the <a href="https://github.com/GuiaBolso/seja-um-guia-front">Amiibo Api</a>.
 Using the search bar you can use keywords to find a specific Amiibo.
+<br>
+You can check out the hosted application by [clicking here](https://amiibo-finder.netlify.app/).
+You can check out the figma design of this application by [clicking here](https://www.figma.com/file/ByTbqjLwiNZKIk4rJzUb6U/Api-Mockup?node-id=0%3A1).
 
-<br />
+<img alt="Gif de Exemplo" src="https://github.com/MarcioAlvior/AmiiboApi/blob/main/demonstration.gif?raw=true" />
 
-<!-- LIST:START -->
-- [<img align="left" alt="N3evin | Porfolio" width="22px"  src="https://simpleicons.org/icons/figma.svg"/>FIGMA DESIGN](https://www.figma.com/file/ByTbqjLwiNZKIk4rJzUb6U/Api-Mockup?node-id=0%3A1)
-- [<img align="left" alt="N3evin | Porfolio" width="22px"  src="https://simpleicons.org/icons/netlify.svg"/>LIVE DEMO](https://amiibo-finder.netlify.app/)
-- [MORE PROJECTS](https://marcioalvior.com/)
-<!-- LIST:END -->
+<br>
+
+## :fire: Functionalities
+
+- Search for and amiibo 
+- Click on an amiibo to show more info 
+
+<br>
