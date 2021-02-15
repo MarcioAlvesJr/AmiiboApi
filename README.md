@@ -13,6 +13,7 @@
 **Amiibo Finder** gets data from the <a href="https://github.com/GuiaBolso/seja-um-guia-front">Amiibo Api</a>.
 Using the search bar you can use keywords to find a specific Amiibo.
 <br>
+<br>
 You can check out the hosted application by [clicking here](https://amiibo-finder.netlify.app/).
 <br>
 You can check out the figma design of this application by [clicking here](https://www.figma.com/file/ByTbqjLwiNZKIk4rJzUb6U/Api-Mockup?node-id=0%3A1).
